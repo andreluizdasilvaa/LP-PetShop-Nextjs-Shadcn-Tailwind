@@ -1,9 +1,10 @@
 'use client';
 
 import useEmblaCarrousel from 'embla-carousel-react'
-import { Home, AlertTriangle, Scissors, Syringe, Stethoscope, Brush, Truck} from 'lucide-react'
+import { Home, AlertTriangle, Scissors, Syringe, Stethoscope, Brush, Truck, Clock, ChevronLeft} from 'lucide-react'
 import { WhatsappLogo } from '@phosphor-icons/react'
 
+import Card from '@/components/CardServices';
 const services = [
     {
       title: "Banho & Tosa",
@@ -74,25 +75,56 @@ export default function Services() {
         }
     })
 
+    /**
+     * Avança para o próximo item no carrossel Embla.
+     * O operador de encadeamento opcional (?.) é usado para garantir que o método `scrollNext/scrollPrev` 
+     * seja chamado apenas se `emblaApi` estiver definido, evitando possíveis erros em tempo de execução.
+     */
+
+    function scrollPrev() {
+      emblaApi?.scrollPrev();
+    }
+
+    function scrollNext() {
+      emblaApi?.scrollNext();
+    }
+
     return(
         <section className="bg-white py-16">
             <div className="container mx-auto px-4">
 
                 <div>
-                    <h2 className="text-4xl font-bold">Serviços</h2>
+                    <h2 className="text-4xl font-bold mb-12">Serviços</h2>
                 </div>
 
                 <div className="relative">
 
-                    <div className='overflow-hidden' ref={emblaRef}>
-                        <div className='flex'> 
-                            {services.map((item, index) => {
-                                <div className='flex-[0_0_100%] min-w-0 md:flex-[0_0_calc(100%/3)] px-3'>
+                    <button 
+                      onClick={scrollNext} 
+                      className='absolute -right-8 -translate-y-1/2 -translate-x-1/2 top-1/2 bg-white flex items-center justify-center rounded-full shadow-lg w-10 h-10 z-10 cursor-pointer'
+                    >
+                      <ChevronLeft 
+                        className='w-6 h-6 text-gray-600'
+                      />
+                    </button>
 
-                                </div>
-                            })}
-                        </div>
+                    <div className='overflow-hidden' ref={emblaRef}>
+                      <div className='flex'> 
+                        {services.map((item, index) => {
+                            return(
+                            <Card item={item} key={index}/>
+                        )})}
+                      </div>
                     </div>
+
+                    <button 
+                      onClick={scrollPrev} 
+                      className='absolute left-3 -translate-y-1/2 -translate-x-1/2 top-1/2 bg-white flex items-center justify-center rounded-full shadow-lg w-10 h-10 z-10 cursor-pointer'
+                    >
+                      <ChevronLeft 
+                        className='w-6 h-6 text-gray-600'
+                      />
+                    </button>
 
                 </div>
             </div>
