@@ -28,7 +28,12 @@ export default function Footer() {
 
                     <div className='grid grid-cols-2 lg:grid-cols-6 gap-8'>
                         {brands.map((item, index) => (
-                            <div key={index} className='bg-white p-4 rounded-lg flex items-center justify-center'>
+                            <div 
+                                key={index} 
+                                className='bg-white p-4 rounded-lg flex items-center justify-center'
+                                data-aos="fade-up"
+                                data-aos-delay={index * 150}
+                            >
                                 <Image 
                                     src={item.logo}
                                     alt={item.name}
@@ -83,6 +88,8 @@ export default function Footer() {
                                 <a
                                     href='#'
                                     target='_blank'
+                                    data-aos="fade-up"
+                                    data-aos-delay="100"
                                 >
                                     <FacebookLogo className='w-8 h-8' />
                                 </a>
@@ -90,6 +97,8 @@ export default function Footer() {
                                 <a
                                     href='#'
                                     target='_blank'
+                                    data-aos="fade-up"
+                                    data-aos-delay="150"
                                 >
                                     <YoutubeLogo className='w-8 h-8'/>
                                 </a>
@@ -97,6 +106,8 @@ export default function Footer() {
                                 <a
                                     href='#'
                                     target='_blank'
+                                    data-aos="fade-up"
+                                    data-aos-delay="200"
                                 >
                                     <InstagramLogo className='w-8 h-8'/>
                                 </a>

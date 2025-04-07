@@ -1,4 +1,5 @@
 import "./globals.css";
+import AosInit from "./_components/aos-init";
 
 export default function RootLayout({ children }) {
   return (
@@ -7,6 +8,7 @@ export default function RootLayout({ children }) {
         className={`antialiased`}
       >
         {children}
+        <AosInit />
       </body>
     </html>
   );
